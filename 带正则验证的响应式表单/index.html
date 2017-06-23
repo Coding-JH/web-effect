@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<h2>注册</h2>
+<div class="inptWrp">
+	<label>姓名</label>
+	<input type="text" name="" value="" data-check="name">
+	<p class="soMsg"></p>
+</div>
+<div class="inptWrp">
+	<label>手机号</label>
+	<input type="tel" name="" value="" data-check="phone">
+	<p class="soMsg"></p>
+</div>
+<div class="inptWrp">
+	<label>密码</label>
+	<input type="password" name="" value="" data-check="password">
+	<a id="psSwch" data-on="false" href="javascript:;"></a>
+	<p class="soMsg"></p>
+</div>
+<div class="inptWrp">
+	<label>验证码</label>
+	<input type="text" name="" value="" data-check="number">
+	<button id="sedMsg">获取验证码</button>
+	<p class="soMsg"></p>
+</div>
+<a class="btnSure" href="javascritp:;">确定</a>
+</body>
+<script type="text/javascript">
+var inpts = document.getElementsByClassName('inptWrp');
+var omsg = document.getElementById("soMsg");
+var aSwich = document.getElementById("psSwch");
+var sedMsg = document.getElementById("sedMsg");
+var CountMinus = null;
+var seconds = 60; //设置总的间隔时长
+var countMus = seconds;
+// 正则的描述和表达，存在一个对象里
+var checkType = {
+		name: "^[\\u4e00-\\u9fa5]{2,}$",
+		nameMsg: "请输入至少2个中文字符",
+		phone: "^(13[0-9]|17[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$",
+		phoneMsg: "请输入13、15、17、18开头的手机号",
+		password: "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$",
+		passwordMsg: "请输入8-10个包含大小写字母或数字的字符",
+		number: "^[0-9]{6}$",
+		numberMsg: "请输入您收到的6位验证码"
+	}
+	// 眼睛点击显示和隐藏密码
+aSwich.onclick = function() {
+		// vals用来判断点击时，眼睛的状态即密码的状态是可看的，还是不可看的
+		var vals = this.getAttribute("data-on");
+		// 不可看见时的操作
+		if (vals == "false") {
+			this.style.backgroundImage = "url(http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/eyeOn.png)";
+			this.parentNode.getElementsByTagName("input")[0].setAttribute("type", "text");
+			this.setAttribute("data-on", "true");
+		}
+		// 可看见时的操作
+		else {
+			this.style.backgroundImage = "url(http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/eyeOf.png)";
+			this.parentNode.getElementsByTagName("input")[0].setAttribute("type", "password");
+			this.setAttribute("data-on", "false");
+		}
+	}
+	// 发送验证码的操作
+sedMsg.onclick = function() {
+		// 点完就设置为disabled，免得用户点多了出错
+		this.setAttribute("disabled", "disabled");
+		// 判定现在的秒数是不是等于总秒数
+		if (countMus == seconds) {
+			// 这个this需要先存，不然代入setInterval会变
+			var _this = this;
+			// 开始减秒的操作
+			var CountMinus = setInterval(function() {
+				if (countMus !== 0) {
+					_this.setAttribute("disabled", "disabled");
+					_this.innerText = countMus + "秒后重新发送";
+					countMus--;
+				}
+				// 减完后，恢复原状
+				else {
+					clearInterval(CountMinus);
+					countMus = seconds;
+					_this.innerText = "获取验证码";
+					_this.removeAttribute("disabled", "disabled");
+				}
+			}, 1000)
+		}
+	}
+	// 检查输入值的判定和文字的定位动效
+function checkVal() {
+
+	var regStr = this.getAttribute("data-check");
+	var testRG = new RegExp(checkType[regStr]);
+	var inputNode = this.parentNode.getElementsByTagName("p")[0];
+	var pNode = this.parentNode.getElementsByTagName("p")[0];
+	var labelNode = this.parentNode.getElementsByTagName("label")[0];
+	var thisVal = this.value;
+	// 值为空时，文字复位，退出
+	if (thisVal == "") {
+		labelNode.style.top = "13px";
+		return;
+	}
+	// 检验不通过，出提示
+	else if (!testRG.test(thisVal)) {
+		inputNode.style.display = "block";
+		pNode.innerText = checkType[regStr + "Msg"];
+	}
+	// 检测通过，隐藏提示   
+	else {
+		pNode.style.display = "none";
+	}
+}
+
+// 当input失去焦点时，每个label文字的定位变更
+for (var i = 0; i < inpts.length; i++) {
+	var oinput = inpts[i].getElementsByTagName("input")[0];
+	oinput.onfocus = function() {
+		this.parentNode.getElementsByTagName("label")[0].style.top = "-17px";
+	}
+	oinput.onblur = checkVal;
+}
+</script>
+</html>

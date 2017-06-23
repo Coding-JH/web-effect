@@ -1,0 +1,94 @@
+body {
+	font-family: "Microsoft YaHei", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html,
+body,
+ul,
+li {
+	margin: 0;
+	padding: 0
+}
+
+.clearfix::after {
+	content: "";
+	display: table;
+	clear: both
+}
+
+ ::-webkit-scrollbar {
+	display: none
+}
+
+ul,
+li {
+	list-style: none
+}
+
+.swipWrp {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+#swiper {
+	position: relative;
+	padding: 28% 50%;
+	overflow: hidden;
+}
+
+#swiper img {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 100%;
+	transition: all 300ms linear 60ms;
+}
+
+.arwL,
+.arwR {
+	background-color: rgba(255, 255, 255, .5);
+	border-radius: 50%;
+	display: block;
+	position: absolute;
+	padding: 3%;
+	background-size: 50% auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 9
+}
+
+.arwL {
+	left: 0;
+	background-image: url("http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/arrowL.png")
+}
+
+.arwR {
+	right: 0;
+	background-image: url("http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/arrowR.png")
+}
+
+#tags {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+
+#tags a {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin: 3px 6px;
+	border-radius: 8px;
+	background-color: rgba(0, 0, 0, .5)
+}
+
+#tags a.on {
+	background-color: rgba(255, 255, 255, .5)
+}

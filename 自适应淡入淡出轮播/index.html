@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <div class="swipWrp">
+        <a id="arwL" href="javascript:;" class="arwL"></a>
+        <div id="swiper" class="clearfix" style="transition: all 1s linear;transform:translateX(0)">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b12.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b06.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b17.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b09.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b10.jpg" alt="壁纸">
+        </div>
+        <a id="arwR" href="javascript:;" class="arwR"></a>
+    </div>
+</body>
+<script type="text/javascript">
+var swiper = document.getElementById("swiper");
+        var imgs = swiper.getElementsByTagName("img");
+        var arwL = document.getElementById("arwL");
+        var arwR = document.getElementById("arwR");
+        var indx = 0;
+        var timers = null;
+        var nodeFgmt = document.createDocumentFragment();
+
+// 这里是动态添加位置原点的js代码
+        newNode = document.createElement("div");
+        newNode.id = "tags";
+
+        for (var i = 0; i < imgs.length; i++) {
+            var ond = document.createElement("a");
+            ond.href = "javascript:;";
+            ond.setAttribute("data-indx", i);
+            nodeFgmt.appendChild(ond);
+        }
+        newNode.appendChild(nodeFgmt);
+
+        swiper.appendChild(newNode);
+        var tagsA = document.getElementById("tags").getElementsByTagName("a");
+// 鼠标滑过原点时显示对应的轮播图片
+        for (var s = 0; s < tagsA.length; s++) {
+            tagsA[s].onmouseover = function() {
+                offEft();
+                hideAll();
+                var indxA = this.getAttribute("data-indx");
+                changeEffect(indxA);
+                this.className = "on"
+
+            }
+            tagsA[s].onmouseout = function() {
+                onEft();
+            }
+        }
+// 这里是初始化轮播的3条代码
+        tagsA[0].className = "on";
+        imgs[0].style.display = "block";
+        imgs[0].style.opacity = "1";
+
+// 隐藏所有的轮播图
+        function hideAll() {
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].style.display = "none";
+                imgs[i].style.opacity = "0";
+                tagsA[i].className = ""
+            }
+        }
+
+// 每隔3.6秒切换轮播图
+        function scrollIntvel() {
+            timers = setInterval(function() {
+                hideAll();
+                if (indx < imgs.length - 1) {
+                    indx++;
+                } else {
+                    indx = 0;
+                }
+                changeEffect(indx);
+            }, 3600);
+        }
+
+
+// 切轮播图的函数，传入对应的轮播图序号
+        function changeEffect(indx) {
+            imgs[indx].style.display = "block";
+          //   console.log("imgs的indx ", indx)
+            setTimeout(function() {
+                imgs[indx].style.opacity = "1";
+                tagsA[indx].className = "on";
+             //    console.log("times的indx ", indx)
+            }, 30);
+        }
+
+// 鼠标滑过时的切换动作函数
+        function onEft() {
+            scrollIntvel()
+          //   console.log("scrolling now  ")
+        }
+
+// 鼠标滑出时的切换动作函数
+        function offEft() {
+            clearInterval(timers);
+        //     console.log("stopping now  ")
+        }
+
+
+// 启动轮播效果
+        scrollIntvel()
+
+// 鼠标滑入滑出的函数调用
+        arwL.onmouseover = offEft;
+        arwR.onmouseover = offEft;
+        arwL.onmouseout = onEft;
+        arwR.onmouseout = onEft;
+
+
+// 左箭头点击效果
+        arwL.onclick = function() {
+            hideAll();
+            if (indx > 0) {
+                indx--;
+            } else {
+                indx = imgs.length - 1;
+            }
+            changeEffect(indx);
+        }
+// 右箭头点击效果
+        arwR.onclick = function() {
+            hideAll();
+            if (indx < imgs.length - 1) {
+                indx++;
+            } else {
+                indx = 0;
+            }
+            changeEffect(indx);
+        }
+</script>
+</html>
