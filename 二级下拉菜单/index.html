@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<nav>
+	<ul id="navLvOne" class="navLvOne clearfix">
+		<li><a href="javascript:;">首页</a></li>
+		<li>
+			<a href="javascript:;">一页</a>
+			<ol>
+				<li><a href="javascript:;">页一1</a></li>
+				<li><a href="javascript:;">页一2</a></li>
+				<li><a href="javascript:;">页一3</a></li>
+				<li><a href="javascript:;">页一4</a></li>
+			</ol>
+		</li>
+		<li>
+			<a href="javascript:;">二页</a>
+			<ol>
+				<li><a href="javascript:;">页二1</a></li>
+				<li><a href="javascript:;">页二2</a></li>
+				<li><a href="javascript:;">页二3</a></li>
+			</ol>
+		</li>
+		<li>
+			<a href="javascript:;">三页</a>
+			<ol>
+				<li><a href="javascript:;">页三1</a></li>
+				<li><a href="javascript:;">页三2</a></li>
+			</ol>
+		</li>
+		<li>
+			<a href="javascript:;">四页</a>
+			<ol>
+				<li><a href="javascript:;">页四1</a></li>
+				<li><a href="javascript:;">页四2</a></li>
+				<li><a href="javascript:;">页四3</a></li>
+				<li><a href="javascript:;">页四4</a></li>
+			</ol>
+		</li>
+		<li>
+			<a href="javascript:;">五页</a>
+			<ol>
+				<li><a href="javascript:;">页五1</a></li>
+				<li><a href="javascript:;">页五2</a></li>
+			</ol>
+		</li>
+	</ul>
+</nav>
+</body>
+<script type="text/javascript">
+var doc = document,
+	olis = document.getElementById("navLvOne").children;
+for (var i = 1; i < olis.length; i++) {
+	olis[i].onmouseover = function() {
+		// 先把下拉菜单全部隐藏
+		for (var l = 1; l < olis.length; l++) {
+			olis[l].lastElementChild.style.display = "none";
+			olis[l].lastElementChild.style.opacity = "0";
+		}
+		// 当前的this需要先保存下来，这样setTimeout里才能引用到
+		var _this = this;
+		this.lastElementChild.style.display = "block";
+		// 先设置为block后再变opacity的值，这样过渡才有效果
+		setTimeout(function() {
+			_this.lastElementChild.style.opacity = "1";
+		}, 10);
+	}
+	// 在下拉菜单里划出时，隐藏它
+	olis[i].lastElementChild.onmouseout = function() {
+		this.style.display = "none";
+		this.style.opacity = "0";
+	}
+}
+</script>
+</html>

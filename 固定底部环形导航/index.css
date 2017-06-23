@@ -1,0 +1,117 @@
+* {
+	margin: 0;
+	padding: 0
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+html,
+body {
+	font-family: "Microsoft YaHei", Verdana, Geneva, Tahoma, sans-serif;
+	height: 100%;
+	background: #fefefe;
+	text-align: center;
+}
+
+.clear::after {
+	content: "";
+	display: table;
+	clear: both
+}
+
+ul,
+li {
+	list-style: none
+}
+
+.navWrp {
+	display: none;
+	position: fixed;
+	z-index: 2;
+	left: 50%;
+	bottom: -20px;
+	height: 160px;
+	width: 160px;
+	margin-left: -80px;
+	/*border: 1px solid #ccc;*/
+	border-radius: 50%;
+}
+
+.navWrp a {
+	display: block;
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	font-size: 12px;
+	background-color: skyblue;
+	color: #fff;
+	transition: all 200ms ease;
+	z-index: 9
+}
+/*当隐藏时重置所有a的定位*/
+
+.navWrp.impt a {
+	top: 80px!important;
+	left: 60px!important;
+}
+/*所有a显示时a的各自定位*/
+
+.navWrp a:nth-child(1) {
+	top: 60px;
+	left: -20px
+}
+
+.navWrp a:nth-child(2) {
+	top: 5px;
+	left: 5px
+}
+
+.navWrp a:nth-child(3) {
+	top: -20px;
+	left: 60px
+}
+
+.navWrp a:nth-child(4) {
+	top: -20px;
+	left: 60px
+}
+
+.navWrp a:nth-child(5) {
+	top: 5px;
+	left: 115px
+}
+
+.navWrp a:nth-child(6) {
+	top: 60px;
+	left: 140px
+}
+
+nav {
+	box-shadow: 0 0 1px #ccc;
+	position: fixed;
+	z-index: 3;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+.navBtn {
+	position: relative;
+	/*相对自己往上20px*/
+	top: -20px;
+	display: inline-block;
+	width: 40px;
+	font-size: 12px;
+	color: #fff;
+	border-radius: 50%;
+	background-color: skyblue
+}

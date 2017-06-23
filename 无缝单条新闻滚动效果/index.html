@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+ <div class="ulwrp">
+	<ul id="oul">
+		<li>新闻标题内容示例001</li>
+		<li>新闻标题内容示例002</li>
+		<li>新闻标题内容示例003</li>
+		<li>新闻标题内容示例004</li>
+		<li>新闻标题内容示例005</li>
+		<li>新闻标题内容示例006</li>
+	</ul>
+</div>
+</body>
+<script type="text/javascript">
+var oul = document.getElementById('oul');
+var olis = oul.getElementsByTagName('li');
+var indexNum = 0;
+// 创建个新的li，里面包含第一个li的内容
+var ofst = document.createElement("li");
+ofst.innerText = olis[0].innerText;
+// 将新的li添加到ul里
+oul.appendChild(ofst);
+// 获取当前最新的长度
+var liLens = olis.length;
+
+function sclNews() {
+	indexNum++;
+	//判定是否到达最后行
+	if (indexNum < liLens) {
+		oul.style.transition = "transform .5s ease-in"; //添加css过渡时的效果
+		// 每次滚动的距离是 单行高*行数
+		oul.style.transform = "translateY(-" + 35 * indexNum + "px)";
+	} else {
+		indexNum = 0;
+		oul.style.transition = ""; //去除css过渡效果
+		oul.style.transform = "translateY(-" + 35 * indexNum + "px)";
+		// 当从列表底部回到头部时，立马切换到第二个li，预留了100毫秒给js处理，所以这里花费的总时间是1900ms
+		setTimeout(function() {
+			indexNum = 1;
+			oul.style.transition = "transform .5s ease-in";
+			oul.style.transform = "translateY(-" + 35 * indexNum + "px)";
+		}, 100)
+	}
+}
+// 每隔1800ms执行
+setInterval(sclNews, 1800)
+</script>
+</html>

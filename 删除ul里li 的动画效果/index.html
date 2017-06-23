@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+<body>
+	<ul id="uls">
+        <li class="clear"><p>秘密的甚笃</p><a href="javascript:;">删除</a></li>
+        <li class="clear"><p>秘密的甚笃</p><a href="javascript:;">删除</a></li>
+        <li class="clear"><p>秘密的甚笃</p><a href="javascript:;">删除</a></li>
+        <li class="clear"><p>秘密的甚笃</p><a href="javascript:;">删除</a></li>
+        <li class="clear"><p>秘密的甚笃</p><a href="javascript:;">删除</a></li>
+        <li class="clear"><p>秘密的甚笃</p><a href="javascript:;">删除</a></li>
+    </ul>
+</body>
+<script type="text/javascript">
+	var oul = document.getElementById("uls");
+    var olis = oul.getElementsByTagName("li");
+    for (var i = 0; i < olis.length; i++) {
+        olis[i].getElementsByTagName("a")[0].onclick = function() {
+            var theLi = this.parentNode;
+            theLi.className = "flipOutX";
+            setTimeout(function() {
+                theLi.style.cssText = "height:0;padding:0;border-width:0;margin:0";
+            }, 280);
+            setTimeout(function() {
+                oul.removeChild(theLi)
+            }, 1000)
+
+        }
+    }
+</script>
+</html>

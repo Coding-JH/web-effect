@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<div id="Btns" class="navWrp impt">
+	<a href="javascript:;">导航0</a>
+	<a href="javascript:;">导航1</a>
+	<a href="javascript:;">导航2</a>
+	<a href="javascript:;">导航3</a>
+	<a href="javascript:;">导航4</a>
+	<a href="javascript:;">导航5</a>
+</div>
+<nav>
+	<a id="mainBtn" class="navBtn" href="javascript:;">导航</a>
+</nav>
+</body>
+<script type="text/javascript">
+var oMbtn = document.getElementById("mainBtn"),
+	obtns = document.getElementById("Btns"),
+	obtnsA = obtns.getElementsByTagName("a");
+oMbtn.setAttribute("show", "off");
+oMbtn.onclick = function() {
+	if (oMbtn.getAttribute("show") == "off") {
+		obtns.style.display = "block";
+		// obtns显示后，再开始动画
+		setTimeout(function() {
+			obtns.className = "navWrp";
+		}, 30);
+		oMbtn.setAttribute("show", "on");
+	} else {
+		obtns.className = "navWrp impt";
+		// 动画完成后，隐藏obtns
+		setTimeout(function() {
+			obtns.style.display = "none";
+		}, 300);
+		oMbtn.setAttribute("show", "off");
+	}
+}
+</script>
+</html>

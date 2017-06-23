@@ -1,0 +1,84 @@
+body {background: #fff;}
+* {margin: 0;padding: 0}
+a {color: #333;text-decoration: none;}
+img {border: none;}
+.clear::after {
+    content: "";
+    display: table;
+    clear: both
+}
+ul,li {list-style: none;}
+#uls { margin: 1rem;}
+#uls li {
+    height: 40px;
+    padding: 12px 0;
+    border: 1px solid skyblue;
+    color: #333;
+    margin-bottom: 12px;
+    border-radius: 2px;
+    transition: all .7s linear;
+    overflow: hidden;
+}
+li p {
+    line-height: 40px;
+    float: left;
+    text-align: left;
+    text-indent: 2rem;
+    width: 70%;
+}
+li a {
+    display: block;
+    font-size: 13px;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 5px;
+    margin-right: 3%;
+    background-color: skyblue;
+    color: #fff;
+    float: right;
+    width: 60px;
+    text-align: center;
+}
+/*动画效果 摘选自animate.css*/
+@-webkit-keyframes flipOutX {
+    from {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+    }
+    30% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        opacity: 0;
+    }
+}
+
+@keyframes flipOutX {
+    from {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+    }
+    30% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        opacity: 0;
+    }
+}
+.flipOutX {
+    -webkit-animation-name: flipOutX;
+    animation-name: flipOutX;
+    animation-duration: .7s;
+    animation-timing-function: linear;
+    -webkit-animation-duration: .7s;
+    animation-fill-mode: forwards
+}

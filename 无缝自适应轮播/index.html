@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+<body>
+	<div class="swipWrp">
+        <a href="javascript:;" class="arwL"></a>
+        <div id="swiper" class="clearfix" style="transition: all 1s linear;transform:translateX(0)">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b01.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b02.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b03.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b04.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b05.jpg" alt="壁纸">
+        </div>
+        <a href="javascript:;" class="arwR"></a>
+    </div>
+</body>
+<script type="text/javascript">
+var swpOuter = document.getElementsByClassName("swipWrp")[0];
+var swiper = document.getElementById("swiper");
+var imgs = swiper.getElementsByTagName("img");
+var arwL = document.getElementsByClassName("arwL")[0];
+var arwR = document.getElementsByClassName("arwR")[0];
+var timer = null;
+var num = 0;
+
+var newNode = document.createElement("img");
+newNode.src = imgs[0].src;
+swiper.appendChild(newNode);
+
+function efect() {
+	if (num == imgs.length) {
+		swiper.style.transition = "";
+		swiper.style.transform = "translateX(0)";
+		setTimeout(function() {
+			num = 1;
+			swiper.style.transition = "all 1s linear";
+			swiper.style.transform = "translateX(" + num * (-16.66) + "%)";
+		}, 0)
+
+	} else {
+		swiper.style.transition = "all 1s linear";
+		swiper.style.transform = "translateX(" + num * (-16.66) + "%)";
+	}
+
+}
+
+function changer() {
+
+	if (num <= imgs.length) {
+		num++
+		efect()
+	} else {
+		num = 0;
+		efect()
+	}
+
+}
+arwL.onclick = function() {
+
+	if (num > 0) {
+		num--
+	} else {
+		num = imgs.length;
+	}
+	efect()
+}
+arwR.onclick = function() {
+	if (num < imgs.length) {
+		num++
+	} else {
+		num = 0;
+	}
+	efect()
+}
+swpOuter.onmouseover = function() {
+	clearInterval(timer)
+}
+swpOuter.onmouseleave = function() {
+	timer = setInterval(changer, 3600)
+}
+timer = setInterval(changer, 3600)
+</script>
+</html>

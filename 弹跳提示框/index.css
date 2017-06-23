@@ -1,0 +1,68 @@
+body {
+	font-family: "微软雅黑", Georgia, 'Times New Roman', Times, serif;
+}
+
+a {
+	text-decoration: none;
+	color: #333
+}
+#cbtn{
+	color:#00B9CC
+}
+
+#fixBox {
+	display: none;
+	position: fixed;
+	z-index: 12;
+	background: rgba(0, 0, 0, .3);
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0
+}
+
+.showOut {
+	display: inline-block;
+	border-radius: 3px;
+	background: #fff;
+	color: #333;
+	width: 90%;
+	margin-top: 5%;
+	margin-left: 5%;
+	text-align: center;
+	position: absolute;
+}
+
+.showOut h2 {
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
+	padding: 3%
+}
+
+.showOut a {
+	color: #333;
+	border-top: 1px solid #ccc;
+	display: block;
+	height: 40px;
+	line-height: 40px
+}
+
+.showOut div {
+	padding-bottom: 5%;
+}
+
+.scaleFadeOut {
+	animation: scaleFadeOut 320ms cubic-bezier(0.175, 0.885, 0.32, 1.275)
+}
+
+@keyframes scaleFadeOut {
+	0% {
+		opacity: 0;
+		transform: scale(2, 2)
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1, 1)
+	}
+}

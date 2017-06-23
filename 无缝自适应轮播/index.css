@@ -1,0 +1,67 @@
+body {
+	font-family: "Microsoft YaHei", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html,
+body,
+ul,
+li {
+	margin: 0;
+	padding: 0
+}
+
+.clearfix::after {
+	content: "";
+	display: table;
+	clear: both
+}
+
+ ::-webkit-scrollbar {
+	display: none
+}
+
+ul,
+li {
+	list-style: none
+}
+
+.swipWrp {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+.arwL,
+.arwR {
+	display: block;
+	position: absolute;
+	padding: 3%;
+	background-size: 80% auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 9
+}
+
+.arwL {
+	left: 0;
+	background-image: url(http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/arrowL.png)
+}
+
+.arwR {
+	right: 0;
+	background-image: url(http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/arrowR.png)
+}
+
+.swipWrp>div>img {
+	float: left;
+	line-height: 0;
+	font-size: 0;
+	width: 15%;
+	margin: 0 .833%;
+}
+
+.swipWrp>div {
+	width: 600%;
+}

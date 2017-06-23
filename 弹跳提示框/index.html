@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+
+<body>
+	<a id="cbtn" href="javascript:;">出现吧，比卡丘</a>
+    <div id="fixBox">
+        <div class="showOut">
+            <h2>温馨提示</h2>
+            <div>
+                比卡！比卡！比卡！
+            </div>
+            <a href="javascript:;">厉害</a>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+	// 获取个元素
+	var box = document.getElementById('fixBox'),
+        cbtn = document.getElementById('cbtn'),
+        stBox = document.getElementsByClassName('showOut')[0],
+        aBtn = box.getElementsByTagName('a')[0];
+    cbtn.addEventListener('click', function() {
+        box.style.display = "block";
+        stBox.className = "showOut scaleFadeOut";
+    });
+    aBtn.addEventListener('click', function() {
+        box.style.display = "none";
+        stBox.className = "showOut";
+    });
+</script>
+</html>
