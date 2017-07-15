@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<ul class="adrlisWrp">
+        <li class="adrsLi">
+            <p class=" clear">
+                <span>鸿丙</span><strong>89898899888</strong>
+            </p>
+            <p>
+                银河系太阳星边蓝色水不规则貌似圆形的星星上 地球村 17区 21段 11号
+            </p>
+            <a class="dlt" href="javascript:;">删除</a>
+        </li>
+        <li class="adrsLi">
+            <p class=" clear">
+                <span>鸿丙</span><strong>89898899888</strong>
+            </p>
+            <p>
+                银河系太阳星边蓝色水不规则貌似圆形的星星上 地球村 17区 21段 11号
+            </p>
+            <a class="dlt" href="javascript:;">删除</a>
+        </li>
+        <li class="adrsLi">
+            <p class=" clear">
+                <span>鸿丙</span><strong>89898899888</strong>
+            </p>
+            <p>
+                银河系太阳星边蓝色水不规则貌似圆形的星星上 地球村 17区 21段 11号
+            </p>
+            <a class="dlt" href="javascript:;">删除</a>
+        </li>
+        <li class="adrsLi">
+            <p class=" clear">
+                <span>鸿丙</span><strong>89898899888</strong>
+            </p>
+            <p>
+                银河系太阳星边蓝色水不规则貌似圆形的星星上 地球村 17区 21段 11号
+            </p>
+            <a class="dlt" href="javascript:;">删除</a>
+        </li>
+        <li class="adrsLi active">
+            <p class=" clear">
+                <span>鸿丙</span><strong>89898899888</strong>
+            </p>
+            <p>
+                银河系太阳星边蓝色水不规则貌似圆形的星星上 地球村 17区 21段 11号
+            </p>
+            <a class="dlt" href="javascript:;">删除</a>
+        </li>
+
+    </ul>
+</body>
+<script type="text/javascript">
+var olis = document.getElementsByClassName("adrsLi");
+var startX = endX = 0;
+for (var i = 0; i < olis.length; i++) {
+    olis[i].addEventListener("touchstart", function(ev) {
+        startX = ev.targetTouches[0].clientX;
+    }, false);
+    olis[i].addEventListener("touchmove", function(ev) {
+        endX = ev.targetTouches[0].clientX;
+    }, false);
+    olis[i].addEventListener("touchend", function(ev) {
+        if (startX - endX > 0) {
+            this.className = "adrsLi active";
+        } else {
+            this.className = "adrsLi";
+        }
+    }, false);
+    olis[i].getElementsByTagName("a")[0].onclick = function() {
+        var thisLi = this.parentNode;
+        thisLi.style.cssText = "transform:translateX(-999px)";
+        setTimeout(function() {
+            thisLi.style.cssText = "transform:translateX(-999px);height:0;padding:0;margin:0";
+            thisLi.className = "adrsLi remove"; //给删除的li添加remove
+        }, 700);
+    }
+}
+</script>
+</html>

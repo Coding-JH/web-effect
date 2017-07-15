@@ -1,0 +1,108 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #F4F4F4;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.clear::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.adrlisWrp {
+    overflow: hidden;
+				width:320px;
+				margin:0 auto;
+}
+
+.adrlisWrp a {
+    text-decoration: none;
+    display: block;
+    padding: 0 4%;
+    font-size: 13px;
+    color: #525252;
+}
+
+.adrlisWrp li {
+    line-height: 53px;
+    background-color: #fff;
+    margin: 3px 0;
+    box-sizing: border-box
+}
+
+.adrlisWrp img.arr {
+    float: right;
+    width: 12px;
+    margin-top: 20px;
+}
+
+.adrlisWrp img.logo {
+    width: 19px;
+    position: relative;
+    top: -2px;
+    margin-right: 3px;
+    vertical-align: middle
+}
+
+.adrsLi {
+    position: relative;
+    box-sizing: border-box;
+    font-size: 13px;
+    padding: 2% 4%;
+    transition: all .5s ease-out;
+}
+
+.adrsLi.active {
+    transform: translateX(-60px)
+}
+
+.adrsLi p {
+    line-height: 16px;
+    color: #525252;
+}
+
+.adrsLi p.clear {
+    height: 30px;
+}
+
+.adrsLi p.clear span {
+    left: 4%;
+    position: absolute;
+    display: block;
+}
+
+.adrsLi p.clear strong {
+    position: absolute;
+    right: 4%;
+    color: #222;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.adrsLi>a.dlt {
+    display: block;
+    box-sizing: border-box;
+    width: 60px;
+    position: absolute;
+    right: -60px;
+    top: 0;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    height: 100%;
+    line-height: 77px;
+    background-color: #fcc647;
+}
